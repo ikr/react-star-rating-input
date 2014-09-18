@@ -97,7 +97,8 @@
     "predef"        : [         // Extra globals.
         "it",
         "describe",
-        "beforeEach"
+        "beforeEach",
+        "afterEach"
     ],
     "indent"        : 4,        // Specify indentation spacing.
     "camelcase"     : true,     // Variable names to use either camelCase or UPPER_CASE style.
