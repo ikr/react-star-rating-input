@@ -1,0 +1,37 @@
+{
+  "name": "react-star-rating-input",
+  "version": "1.0.0",
+  "description": "React.js component for entering 0-5 stars",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "jshint tests src index.js",
+    "test": "mocha tests/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ikr/react-star-rating-input.git"
+  },
+  "keywords": [
+    "reactjs",
+    "component",
+    "html",
+    "form",
+    "input",
+    "control",
+    "widget",
+    "stars",
+    "rating"
+  ],
+  "author": "Ivan Krechetov <ikr@ikr.su>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ikr/react-star-rating-input/issues"
+  },
+  "dependencies": {
+    "react": "^0.11.2"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.5",
+    "mocha": "^1.21.4"
+  }
+}
