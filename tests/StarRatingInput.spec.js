@@ -5,6 +5,11 @@ describe('StarRatingInput instance', function () {
         jsdom = require('jsdom'),
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
+
+        props = function (currentValue, prospectiveValue) {
+            return {currentValue: currentValue, prospectiveValue: prospectiveValue};
+        },
+
         $;
 
     beforeEach(function (done) {
@@ -25,7 +30,7 @@ describe('StarRatingInput instance', function () {
         var component;
 
         beforeEach(function () {
-            component = TestUtils.renderIntoDocument(StarRatingInput({}));
+            component = TestUtils.renderIntoDocument(StarRatingInput(props(0, 0)));
         });
 
         it('has the root element\'s class assigned', function () {
