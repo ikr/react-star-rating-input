@@ -3,6 +3,14 @@
 
     var React = require('react'),
 
+        clearingItem = function () {
+            return React.DOM.a({
+                className: 'star-rating-clear',
+                title: 'Reset value to no stars',
+                href: ''
+            }, 'Clear');
+        },
+
         starItem = function (value) {
             return React.DOM.span(
                 {className: 'star-rating-star-container'},
@@ -18,12 +26,7 @@
         render: function () {
             return React.DOM.div(
                 {className: 'star-rating-input'},
-
-                [React.DOM.a({
-                    className: 'star-rating-clear',
-                    title: 'Reset value to no stars',
-                    href: ''
-                }, 'Clear')].concat(starItems())
+                [clearingItem()].concat(starItems())
             );
         }
     });
