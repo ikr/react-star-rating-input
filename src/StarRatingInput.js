@@ -4,15 +4,19 @@
     var React = require('react'),
 
         clearingItem = function () {
-            return React.DOM.a({
-                className: 'star-rating-clear',
-                title: 'Reset value to no stars',
-                href: ''
-            }, 'Clear');
+            return React.DOM.div(
+                {className: 'star-rating-clear-container'},
+
+                React.DOM.a({
+                    className: 'star-rating-clear',
+                    title: 'Reset value to no stars',
+                    href: ''
+                }, 'Clear')
+            );
         },
 
         starItem = function (value) {
-            return React.DOM.span(
+            return React.DOM.div(
                 {className: 'star-rating-star-container'},
                 React.DOM.a({className: 'star-rating-star', title: value, href: ''}, value)
             );
