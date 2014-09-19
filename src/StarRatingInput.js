@@ -5,7 +5,7 @@
 
         clearingItem = function () {
             return React.DOM.div(
-                {className: 'star-rating-clear-container'},
+                {className: 'star-rating-clear-container', key: 's0'},
 
                 React.DOM.a({
                     className: 'star-rating-clear',
@@ -16,15 +16,11 @@
         },
 
         anchorState = function (value, props) {
-            if (value <= props.currentValue) {
-                return 'on';
+            if (props.prospectiveValue > 0) {
+                return (value <= props.prospectiveValue ? 'suggested' : 'off');
             }
 
-            return 'off';
-        },
-
-        additionalAnchorClass = function (state) {
-            return (state === 'off' ? '' : (' ' + state));
+            return (value <= props.currentValue ? 'on' : 'off');
         },
 
         starItem = function (value, state) {
@@ -32,9 +28,10 @@
                 {className: 'star-rating-star-container'},
 
                 React.DOM.a({
-                    className: 'star-rating-star' + additionalAnchorClass(state),
+                    className: 'star-rating-star ' + state,
                     title: value,
-                    href: ''
+                    href: '',
+                    key: 's' + value
                 }, value)
             );
         },

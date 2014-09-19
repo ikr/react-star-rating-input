@@ -46,15 +46,29 @@ describe('StarRatingInput instance', function () {
         });
     });
 
-    describe('selected stars indication', function () {
-        var element;
+    describe('state indication', function () {
+        var assertState = function (element, onCount, offCount, suggestedCount) {
+                assert.strictEqual($('.star-rating-star-container a.on', element).size(), onCount);
 
-        beforeEach(function () {
-            element = TestUtils.renderIntoDocument(StarRatingInput(props(3, 0))).getDOMNode();
+                assert.strictEqual(
+                    $('.star-rating-star-container a.off', element).size(), offCount);
+
+                assert.strictEqual(
+                    $('.star-rating-star-container a.suggested', element).size(), suggestedCount);
+            },
+
+            element = function (currentValue, prospectiveValue) {
+                return TestUtils.renderIntoDocument(
+                    StarRatingInput(props(currentValue, prospectiveValue))
+                ).getDOMNode();
+            };
+
+        it('is done with the "on" class for current values', function () {
+            assertState(element(3, 0), 3, 2, 0);
         });
 
-        it('is done with the "selected" class', function () {
-            assert.strictEqual($('.star-rating-star-container a.on', element).size(), 3);
+        it('is done with the "suggested" class for prospective values', function () {
+            assertState(element(4, 3), 0, 2, 3);
         });
     });
 });
