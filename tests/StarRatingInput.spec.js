@@ -45,4 +45,16 @@ describe('StarRatingInput instance', function () {
             assert.strictEqual($('.star-rating-star-container', element).size(), 5);
         });
     });
+
+    describe('selected stars indication', function () {
+        var element;
+
+        beforeEach(function () {
+            element = TestUtils.renderIntoDocument(StarRatingInput(props(3, 0))).getDOMNode();
+        });
+
+        it('is done with the "selected" class', function () {
+            assert.strictEqual($('.star-rating-star-container a.on', element).size(), 3);
+        });
+    });
 });

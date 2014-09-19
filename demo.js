@@ -8,7 +8,7 @@
     insertCss(api.css);
 
     React.renderComponent(
-        api.Klass({currentValue: 0, prospectiveValue: 0}),
+        api.Klass({currentValue: 4, prospectiveValue: 0}),
         global.document.getElementById('container')
     );
 }());
