@@ -5,7 +5,7 @@
 
         clearingItem = function () {
             return React.DOM.div(
-                {className: 'star-rating-clear-container', key: 's0'},
+                {className: 'star-rating-clear-container', key: 0},
 
                 React.DOM.a({
                     className: 'star-rating-clear',
@@ -25,13 +25,12 @@
 
         starItem = function (value, state) {
             return React.DOM.div(
-                {className: 'star-rating-star-container'},
+                {className: 'star-rating-star-container', key: value},
 
                 React.DOM.a({
                     className: 'star-rating-star ' + state,
                     title: value,
-                    href: '',
-                    key: 's' + value
+                    href: ''
                 }, value)
             );
         },
