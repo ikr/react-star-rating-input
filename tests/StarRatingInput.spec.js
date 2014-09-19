@@ -27,14 +27,18 @@ describe('StarRatingInput instance', function () {
     });
 
     describe('static markup', function () {
-        var component;
+        var element;
 
         beforeEach(function () {
-            component = TestUtils.renderIntoDocument(StarRatingInput(props(0, 0)));
+            element = TestUtils.renderIntoDocument(StarRatingInput(props(0, 0))).getDOMNode();
         });
 
         it('has the root element\'s class assigned', function () {
-            assert($(component.getDOMNode()).hasClass('star-rating-input'));
+            assert($(element).hasClass('star-rating-input'));
+        });
+
+        it('has the "Clear" link', function () {
+            assert.strictEqual($('a.star-rating-clear', element).text(), 'Clear');
         });
     });
 });

@@ -5,7 +5,14 @@
 
     module.exports = React.createClass({
         render: function () {
-            return React.DOM.span({className: 'star-rating-input'}, 'Hey there!');
+            return React.DOM.div(
+                {className: 'star-rating-input'},
+
+                React.DOM.a(
+                    {className: 'star-rating-clear', title: 'Reset value to no stars'},
+                    'Clear'
+                )
+            );
         }
     });
 }());
