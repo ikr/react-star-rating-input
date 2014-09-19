@@ -20,7 +20,7 @@ div.star-rating-star-container {
 
 a.star-rating-star {
     display: block;
-    width: 100%
+    width: 100%;
     height: 100%;
     text-indent: -999em;
 }
@@ -31,4 +31,9 @@ div.star-rating-star-container a.star-rating-star:hover {
 
 div.star-rating-star-container a.on {
     background-position: 0 -16px;
+}
+
+
+div.star-rating-star-container a.suggested {
+    background-position: 0 -32px;
 }
