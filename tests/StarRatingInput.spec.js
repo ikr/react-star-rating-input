@@ -1,5 +1,3 @@
-/* jshint newcap:false */
-
 describe('StarRatingInput', function () {
     'use strict';
 
