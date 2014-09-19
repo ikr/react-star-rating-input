@@ -42,10 +42,7 @@ describe('StarRatingInput instance', function () {
         });
 
         it('has the 5 star items', function () {
-            assert.strictEqual(
-                $('.star-rating-star-container > a.star-rating-star', element).size(),
-                5
-            );
+            assert.strictEqual($('.star-rating-star-container', element).size(), 5);
         });
     });
 });
