@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "jshint tests src index.js demo.js",
     "test": "mocha tests/*.spec.js",
-    "build": "browserify demo.js -o www/bundle.js"
+    "build": "browserify -t brfs demo.js -o www/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,8 @@
     "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "jsdom": "^1.0.0-pre.6",
-    "browserify": "^5.11.2"
+    "browserify": "^5.11.2",
+    "insert-css": "^0.2.0",
+    "brfs": "^1.2.0"
   }
 }

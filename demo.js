@@ -2,7 +2,13 @@
     'use strict';
 
     var React = require('react'),
-        StarRatingInput = require('./src/StarRatingInput');
+        api = require('./index'),
+        insertCss = require('insert-css');
 
-    React.renderComponent(StarRatingInput({}), global.document.getElementById('container'));
+    insertCss(api.css);
+
+    React.renderComponent(
+        api.Klass({currentValue: 0, prospectiveValue: 0}),
+        global.document.getElementById('container')
+    );
 }());

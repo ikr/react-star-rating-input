@@ -8,10 +8,11 @@
             return React.DOM.div(
                 {className: 'star-rating-input'},
 
-                React.DOM.a(
-                    {className: 'star-rating-clear', title: 'Reset value to no stars'},
-                    'Clear'
-                )
+                React.DOM.a({
+                    className: 'star-rating-clear',
+                    title: 'Reset value to no stars',
+                    href: 'javascript:;'
+                }, 'Clear')
             );
         }
     });

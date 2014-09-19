@@ -1,5 +1,9 @@
 (function () {
     'use strict';
 
-    module.exports = require('./src/StarRatingInput');
+    var StarRatingInput = require('./src/StarRatingInput'),
+        css = require('./src/css');
+
+    exports.Klass = StarRatingInput;
+    exports.css = css;
 }());
