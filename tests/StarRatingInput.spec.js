@@ -40,5 +40,12 @@ describe('StarRatingInput instance', function () {
         it('has the "Clear" link', function () {
             assert.strictEqual($('a.star-rating-clear', element).text(), 'Clear');
         });
+
+        it('has the 5 star items', function () {
+            assert.strictEqual(
+                $('.star-rating-star-container > a.star-rating-star', element).size(),
+                5
+            );
+        });
     });
 });

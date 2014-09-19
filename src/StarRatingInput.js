@@ -1,18 +1,29 @@
 (function () {
     'use strict';
 
-    var React = require('react');
+    var React = require('react'),
+
+        starItem = function (value) {
+            return React.DOM.span(
+                {className: 'star-rating-star-container'},
+                React.DOM.a({className: 'star-rating-star', title: value, href: ''}, value)
+            );
+        },
+
+        starItems = function () {
+            return [1, 2, 3, 4, 5].map(starItem);
+        };
 
     module.exports = React.createClass({
         render: function () {
             return React.DOM.div(
                 {className: 'star-rating-input'},
 
-                React.DOM.a({
+                [React.DOM.a({
                     className: 'star-rating-clear',
                     title: 'Reset value to no stars',
-                    href: 'javascript:;'
-                }, 'Clear')
+                    href: ''
+                }, 'Clear')].concat(starItems())
             );
         }
     });
