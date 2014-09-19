@@ -7,7 +7,11 @@ describe('StarRatingInput instance', function () {
         StarRatingInput = require('../src/StarRatingInput'),
 
         props = function (currentValue, prospectiveValue) {
-            return {currentValue: currentValue, prospectiveValue: prospectiveValue};
+            return {
+                currentValue: currentValue,
+                prospectiveValue: prospectiveValue,
+                onChange: function () {}
+            };
         },
 
         $;
