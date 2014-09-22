@@ -7,7 +7,7 @@ React.js component for entering 0-5 stars. See
 
 # Installation
 
-Made for [Browserify](http://browserify.org/); grafics and CSS bundled.
+Made for [Browserify](http://browserify.org/); graphics and CSS bundled.
 
     npm install --save react-star-rating-input
 
