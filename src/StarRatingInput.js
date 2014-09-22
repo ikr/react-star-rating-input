@@ -27,7 +27,8 @@
                     href: '',
                     ref: 's0',
 
-                    onClick: function () {
+                    onClick: function (e) {
+                        e.preventDefault();
                         that.props.onChange(state(0, 0));
                     }
                 }, 'Clear')
@@ -62,7 +63,8 @@
                         that.props.onChange(state(that.props.currentValue, 0));
                     },
 
-                    onClick: function () {
+                    onClick: function (e) {
+                        e.preventDefault();
                         that.props.onChange(state(value, 0));
                     }
                 }, value)

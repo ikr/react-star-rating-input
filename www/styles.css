@@ -25,10 +25,6 @@ a.star-rating-star {
     text-indent: -999em;
 }
 
-div.star-rating-star-container a.star-rating-star:hover {
-    background-position: 0 -32px;
-}
-
 div.star-rating-star-container a.on {
     background-position: 0 -16px;
 }

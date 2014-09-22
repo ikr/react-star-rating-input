@@ -2,13 +2,25 @@
     'use strict';
 
     var React = require('react'),
-        api = require('./index'),
-        insertCss = require('insert-css');
+        StarRatingInput = require('./index'),
+        insertCss = require('insert-css'),
 
-    insertCss(api.css);
+        Container = React.createClass({
+            render: function () {
+                var that = this;
 
-    React.renderComponent(
-        api.Klass({currentValue: 3, prospectiveValue: 2, onChange: function () { console.dir(arguments[0]); }}),
-        global.document.getElementById('container')
-    );
+                return StarRatingInput.Klass({
+                    currentValue: this.state.currentValue,
+                    prospectiveValue: this.state.prospectiveValue,
+                    onChange: function (s) { that.setState(s); }
+                });
+            },
+
+            getInitialState: function () {
+                return {currentValue: 0, prospectiveValue: 0};
+            }
+        });
+
+    insertCss(StarRatingInput.css);
+    React.renderComponent(Container(), global.document.body);
 }());
