@@ -2,16 +2,22 @@ describe('StarRatingInput instance', function () {
     'use strict';
 
     var assert = require('assert'),
+        sinon = require('sinon'),
         jsdom = require('jsdom'),
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
-        props = function (currentValue, prospectiveValue) {
+        state = function (currentValue, prospectiveValue) {
             return {
                 currentValue: currentValue,
-                prospectiveValue: prospectiveValue,
-                onChange: function () {}
+                prospectiveValue: prospectiveValue
             };
+        },
+
+        props = function (currentValue, prospectiveValue, onChange) {
+            var result = state(currentValue, prospectiveValue);
+            result.onChange = onChange ? onChange : function () {};
+            return result;
         },
 
         $;
@@ -73,6 +79,26 @@ describe('StarRatingInput instance', function () {
 
         it('is done with the "suggested" class for prospective values', function () {
             assertState(element(4, 3), 0, 2, 3);
+        });
+    });
+
+    describe('interactions', function () {
+        var component,
+            spy;
+
+        beforeEach(function () {
+            spy = sinon.spy();
+            component = TestUtils.renderIntoDocument(StarRatingInput(props(1, 2, spy)));
+        });
+
+        it('include triggering mouse hover', function () {
+            // TestUtils.Simulate.mouseEnter(component.refs.s4); doesn't work
+            // -- that's a known issue https://github.com/facebook/react/issues/1297
+            // therefore, here's a (hopefully) temporary workaround
+            //
+            TestUtils.SimulateNative.mouseOver(component.refs.s4);
+
+            assert(spy.calledWith(state(1, 4)));
         });
     });
 });
