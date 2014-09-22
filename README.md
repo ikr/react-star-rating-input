@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ikr/react-star-rating-input.svg?branch=master)](https://travis-ci.org/ikr/react-star-rating-input)
+
 # About
 
 React.js component for entering 0-5 stars. See
