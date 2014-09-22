@@ -100,5 +100,15 @@ describe('StarRatingInput instance', function () {
 
             assert(spy.calledWith(state(1, 4)));
         });
+
+        it('include triggering mouse leave', function () {
+            // TestUtils.Simulate.mouseLeave(component.refs.s2); doesn't work
+            // -- that's a known issue https://github.com/facebook/react/issues/1297
+            // therefore, here's a (hopefully) temporary workaround
+            //
+            TestUtils.SimulateNative.mouseOut(component.refs.s2);
+
+            assert(spy.calledWith(state(1, 0)));
+        });
     });
 });
