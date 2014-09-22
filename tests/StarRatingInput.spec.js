@@ -91,7 +91,7 @@ describe('StarRatingInput instance', function () {
             component = TestUtils.renderIntoDocument(StarRatingInput(props(1, 2, spy)));
         });
 
-        it('include triggering mouse hover', function () {
+        it('include signaling new prespective value on mouse hover for a star', function () {
             // TestUtils.Simulate.mouseEnter(component.refs.s4); doesn't work
             // -- that's a known issue https://github.com/facebook/react/issues/1297
             // therefore, here's a (hopefully) temporary workaround
@@ -101,7 +101,7 @@ describe('StarRatingInput instance', function () {
             assert(spy.calledWith(state(1, 4)));
         });
 
-        it('include triggering mouse leave', function () {
+        it('include signalling no prospective value on mouse leave for a star', function () {
             // TestUtils.Simulate.mouseLeave(component.refs.s2); doesn't work
             // -- that's a known issue https://github.com/facebook/react/issues/1297
             // therefore, here's a (hopefully) temporary workaround
@@ -109,6 +109,16 @@ describe('StarRatingInput instance', function () {
             TestUtils.SimulateNative.mouseOut(component.refs.s2);
 
             assert(spy.calledWith(state(1, 0)));
+        });
+
+        it('include signalling new current value on a star click', function () {
+            TestUtils.Simulate.click(component.refs.s5);
+            assert(spy.calledWith(state(5, 0)));
+        });
+
+        it('include signalling zero current value on a "Clear" link click', function () {
+            TestUtils.Simulate.click(component.refs.s0);
+            assert(spy.calledWith(state(0, 0)));
         });
     });
 });

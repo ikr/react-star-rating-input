@@ -5,25 +5,32 @@
 
         state = function (currentValue, prospectiveValue) {
             return {currentValue: currentValue, prospectiveValue: prospectiveValue};
-        },
-
-        clearingItem = function () {
-            return React.DOM.div(
-                {className: 'star-rating-clear-container', key: 0},
-
-                React.DOM.a({
-                    className: 'star-rating-clear',
-                    title: 'Reset value to no stars',
-                    href: ''
-                }, 'Clear')
-            );
         };
 
     module.exports = React.createClass({
         render: function () {
             return React.DOM.div(
                 {className: 'star-rating-input'},
-                [clearingItem()].concat(this.starItems())
+                [this.clearingItem()].concat(this.starItems())
+            );
+        },
+
+        clearingItem: function () {
+            var that = this;
+
+            return React.DOM.div(
+                {className: 'star-rating-clear-container', key: 0},
+
+                React.DOM.a({
+                    className: 'star-rating-clear',
+                    title: 'Reset value to no stars',
+                    href: '',
+                    ref: 's0',
+
+                    onClick: function () {
+                        that.props.onChange(state(0, 0));
+                    }
+                }, 'Clear')
             );
         },
 
@@ -53,6 +60,10 @@
 
                     onMouseLeave: function () {
                         that.props.onChange(state(that.props.currentValue, 0));
+                    },
+
+                    onClick: function () {
+                        that.props.onChange(state(value, 0));
                     }
                 }, value)
             );
