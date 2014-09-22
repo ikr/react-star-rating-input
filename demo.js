@@ -2,8 +2,8 @@
     'use strict';
 
     var React = require('react'),
-        StarRatingInput = require('./index'),
         insertCss = require('insert-css'),
+        StarRatingInput = require('./index'),
 
         Container = React.createClass({
             render: function () {
