@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "jshint tests src index.js demo.js",
     "test": "mocha tests/*.spec.js",
-    "build": "browserify -t brfs demo.js -o www/bundle.js"
+    "build": "browserify -t brfs demo.js | uglifyjs > www/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "browserify": "^5.11.2",
     "insert-css": "^0.2.0",
     "brfs": "^1.2.0",
-    "sinon": "^1.10.3"
+    "sinon": "^1.10.3",
+    "uglify-js": "^2.4.15"
   }
 }
