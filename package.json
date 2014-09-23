@@ -17,6 +17,8 @@
     "component",
     "html",
     "form",
+    "browser",
+    "browserify",
     "input",
     "control",
     "widget",
