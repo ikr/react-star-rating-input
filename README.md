@@ -3,7 +3,7 @@
 # About
 
 React.js component for entering 0-5 stars. See
-[the demo](http://ikr.su/h/react-star-rating-input/www/demo.html).
+[the demo](http://ikr.su/h/react-star-rating-input/demo.html).
 
 # Installation
 
