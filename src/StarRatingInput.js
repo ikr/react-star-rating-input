@@ -3,13 +3,13 @@
 
     var React = require('react'),
 
-        state = function (currentValue, prospectiveValue) {
-            return {currentValue: currentValue, prospectiveValue: prospectiveValue};
+        state = function (value, prospectiveValue) {
+            return {value: value, prospectiveValue: prospectiveValue};
         };
 
     module.exports = React.createClass({
         propTypes: {
-            currentValue: React.PropTypes.number,
+            value: React.PropTypes.number,
             onChange: React.PropTypes.func
         },
 
@@ -61,11 +61,11 @@
                     ref: 's' + value,
 
                     onMouseEnter: function () {
-                        that.props.onChange(state(that.props.currentValue, value));
+                        that.props.onChange(state(that.props.value, value));
                     },
 
                     onMouseLeave: function () {
-                        that.props.onChange(state(that.props.currentValue, 0));
+                        that.props.onChange(state(that.props.value, 0));
                     },
 
                     onClick: function (e) {
@@ -81,7 +81,7 @@
                 return (value <= this.props.prospectiveValue ? 'suggested' : 'off');
             }
 
-            return (value <= this.props.currentValue ? 'on' : 'off');
+            return (value <= this.props.value ? 'on' : 'off');
         }
     });
 }());

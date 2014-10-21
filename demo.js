@@ -10,14 +10,14 @@
                 var that = this;
 
                 return StarRatingInput.Klass({
-                    currentValue: this.state.currentValue,
+                    value: this.state.value,
                     prospectiveValue: this.state.prospectiveValue,
                     onChange: function (s) { that.setState(s); }
                 });
             },
 
             getInitialState: function () {
-                return {currentValue: 0, prospectiveValue: 0};
+                return {value: 0, prospectiveValue: 0};
             }
         });
 

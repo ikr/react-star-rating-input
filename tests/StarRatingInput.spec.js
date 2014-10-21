@@ -7,15 +7,15 @@ describe('StarRatingInput', function () {
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
-        state = function (currentValue, prospectiveValue) {
+        state = function (value, prospectiveValue) {
             return {
-                currentValue: currentValue,
+                value: value,
                 prospectiveValue: prospectiveValue
             };
         },
 
-        props = function (currentValue, prospectiveValue, onChange) {
-            var result = state(currentValue, prospectiveValue);
+        props = function (value, prospectiveValue, onChange) {
+            var result = state(value, prospectiveValue);
             result.onChange = onChange ? onChange : function () {};
             return result;
         },
@@ -36,7 +36,7 @@ describe('StarRatingInput', function () {
         global.window.close();
     });
 
-    ['currentValue', 'onChange'].forEach(function (p) {
+    ['value', 'onChange'].forEach(function (p) {
         it('declares the ' + p + ' property', function () {
             assert(StarRatingInput.propTypes[p]);
         });
@@ -73,9 +73,9 @@ describe('StarRatingInput', function () {
                     $('.star-rating-star-container a.suggested', element).size(), suggestedCount);
             },
 
-            element = function (currentValue, prospectiveValue) {
+            element = function (value, prospectiveValue) {
                 return TestUtils.renderIntoDocument(
-                    StarRatingInput(props(currentValue, prospectiveValue))
+                    StarRatingInput(props(value, prospectiveValue))
                 ).getDOMNode();
             };
 
