@@ -1,16 +1,20 @@
 (function () {
     'use strict';
 
-    var React = require('react'),
-
-        state = function (value, prospectiveValue) {
-            return {value: value, prospectiveValue: prospectiveValue};
-        };
+    var React = require('react');
 
     module.exports = React.createClass({
         propTypes: {
             value: React.PropTypes.number,
             onChange: React.PropTypes.func
+        },
+
+        getDefaultProps: function () {
+            return {value: 0};
+        },
+
+        getInitialState: function () {
+            return {prospectiveValue: 0};
         },
 
         render: function () {
@@ -34,7 +38,8 @@
 
                     onClick: function (e) {
                         e.preventDefault();
-                        that.props.onChange(state(0, 0));
+                        that.setState({prospectiveValue: 0});
+                        that.props.onChange({value: 0});
                     }
                 }, 'Clear')
             );
@@ -61,24 +66,25 @@
                     ref: 's' + value,
 
                     onMouseEnter: function () {
-                        that.props.onChange(state(that.props.value, value));
+                        that.setState({prospectiveValue: value});
                     },
 
                     onMouseLeave: function () {
-                        that.props.onChange(state(that.props.value, 0));
+                        that.setState({prospectiveValue: 0});
                     },
 
                     onClick: function (e) {
                         e.preventDefault();
-                        that.props.onChange(state(value, 0));
+                        that.setState({prospectiveValue: 0});
+                        that.props.onChange({value: value});
                     }
                 }, value)
             );
         },
 
         anchorMode: function (value) {
-            if (this.props.prospectiveValue > 0) {
-                return (value <= this.props.prospectiveValue ? 'suggested' : 'off');
+            if (this.state.prospectiveValue > 0) {
+                return (value <= this.state.prospectiveValue ? 'suggested' : 'off');
             }
 
             return (value <= this.props.value ? 'on' : 'off');

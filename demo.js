@@ -7,17 +7,14 @@
 
         Container = React.createClass({
             render: function () {
-                var that = this;
-
                 return StarRatingInput.Klass({
                     value: this.state.value,
-                    prospectiveValue: this.state.prospectiveValue,
-                    onChange: function (s) { that.setState(s); }
+                    onChange: function (s) { this.setState(s); }.bind(this)
                 });
             },
 
             getInitialState: function () {
-                return {value: 0, prospectiveValue: 0};
+                return {value: 0};
             }
         });
 

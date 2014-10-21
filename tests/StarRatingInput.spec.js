@@ -7,20 +7,13 @@ describe('StarRatingInput', function () {
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
-        state = function (value, prospectiveValue) {
-            return {
-                value: value,
-                prospectiveValue: prospectiveValue
-            };
-        },
-
-        props = function (value, prospectiveValue, onChange) {
-            var result = state(value, prospectiveValue);
-            result.onChange = onChange ? onChange : function () {};
-            return result;
+        props = function (value, onChange) {
+            return {value: value, onChange: (onChange ? onChange : function () {})};
         },
 
         $;
+
+    this.timeout(4000);
 
     beforeEach(function (done) {
         global.document = jsdom.jsdom('<html><body></body></html>', jsdom.level(1, 'core'));
@@ -46,7 +39,7 @@ describe('StarRatingInput', function () {
         var element;
 
         beforeEach(function () {
-            element = TestUtils.renderIntoDocument(StarRatingInput(props(0, 0))).getDOMNode();
+            element = TestUtils.renderIntoDocument(StarRatingInput(props(0))).getDOMNode();
         });
 
         it('has the root element\'s class assigned', function () {
@@ -74,9 +67,13 @@ describe('StarRatingInput', function () {
             },
 
             element = function (value, prospectiveValue) {
-                return TestUtils.renderIntoDocument(
-                    StarRatingInput(props(value, prospectiveValue))
-                ).getDOMNode();
+                var component = TestUtils.renderIntoDocument(
+                        StarRatingInput(props(value, prospectiveValue))
+                    );
+
+                component.setState({prospectiveValue: prospectiveValue});
+
+                return component.getDOMNode();
             };
 
         it('is done with the "on" class for current values', function () {
@@ -88,13 +85,30 @@ describe('StarRatingInput', function () {
         });
     });
 
+    describe('defaults', function () {
+        var component;
+
+        beforeEach(function () {
+            component = TestUtils.renderIntoDocument(StarRatingInput({onChange: function () {}}));
+        });
+
+        it('include default value', function () {
+            assert.strictEqual(component.props.value, 0);
+        });
+
+        it('include default prospective value', function () {
+            assert.strictEqual(component.state.prospectiveValue, 0);
+        });
+    });
+
     describe('interactions', function () {
         var component,
             spy;
 
         beforeEach(function () {
             spy = sinon.spy();
-            component = TestUtils.renderIntoDocument(StarRatingInput(props(1, 2, spy)));
+            component = TestUtils.renderIntoDocument(StarRatingInput(props(1, spy)));
+            component.setState({prospectiveValue: 2});
         });
 
         it('include signaling new prespective value on mouse hover for a star', function () {
@@ -104,7 +118,8 @@ describe('StarRatingInput', function () {
             //
             TestUtils.SimulateNative.mouseOver(component.refs.s4);
 
-            assert(spy.calledWith(state(1, 4)));
+            assert.strictEqual(spy.callCount, 0);
+            assert.strictEqual(component.state.prospectiveValue, 4);
         });
 
         it('include signalling no prospective value on mouse leave for a star', function () {
@@ -114,17 +129,20 @@ describe('StarRatingInput', function () {
             //
             TestUtils.SimulateNative.mouseOut(component.refs.s2);
 
-            assert(spy.calledWith(state(1, 0)));
+            assert.strictEqual(spy.callCount, 0);
+            assert.strictEqual(component.state.prospectiveValue, 0);
         });
 
         it('include signalling new current value on a star click', function () {
             TestUtils.Simulate.click(component.refs.s5);
-            assert(spy.calledWith(state(5, 0)));
+            assert(spy.calledWith({value: 5}));
+            assert.strictEqual(component.state.prospectiveValue, 0);
         });
 
         it('include signalling zero current value on a "Clear" link click', function () {
             TestUtils.Simulate.click(component.refs.s0);
-            assert(spy.calledWith(state(0, 0)));
+            assert(spy.calledWith({value: 0}));
+            assert.strictEqual(component.state.prospectiveValue, 0);
         });
     });
 });
