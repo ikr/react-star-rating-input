@@ -25,8 +25,6 @@
         },
 
         clearingItem: function () {
-            var that = this;
-
             return React.DOM.div(
                 {className: 'star-rating-clear-container', key: 0},
 
@@ -38,24 +36,20 @@
 
                     onClick: function (e) {
                         e.preventDefault();
-                        that.setState({prospectiveValue: 0});
-                        that.props.onChange({value: 0});
-                    }
+                        this.setState({prospectiveValue: 0});
+                        this.props.onChange({value: 0});
+                    }.bind(this)
                 }, 'Clear')
             );
         },
 
         starItems: function () {
-            var that = this;
-
             return [1, 2, 3, 4, 5].map(function (value) {
-                return that.starItem(value, that.anchorMode(value));
-            });
+                return this.starItem(value, this.anchorMode(value));
+            }.bind(this));
         },
 
         starItem: function (value, mode) {
-            var that = this;
-
             return React.DOM.div(
                 {className: 'star-rating-star-container', key: value},
 
@@ -66,18 +60,18 @@
                     ref: 's' + value,
 
                     onMouseEnter: function () {
-                        that.setState({prospectiveValue: value});
-                    },
+                        this.setState({prospectiveValue: value});
+                    }.bind(this),
 
                     onMouseLeave: function () {
-                        that.setState({prospectiveValue: 0});
-                    },
+                        this.setState({prospectiveValue: 0});
+                    }.bind(this),
 
                     onClick: function (e) {
                         e.preventDefault();
-                        that.setState({prospectiveValue: 0});
-                        that.props.onChange({value: value});
-                    }
+                        this.setState({prospectiveValue: 0});
+                        this.props.onChange({value: value});
+                    }.bind(this)
                 }, value)
             );
         },
