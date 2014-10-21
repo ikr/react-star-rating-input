@@ -8,6 +8,11 @@
         };
 
     module.exports = React.createClass({
+        propTypes: {
+            currentValue: React.PropTypes.number,
+            onChange: React.PropTypes.func
+        },
+
         render: function () {
             return React.DOM.div(
                 {className: 'star-rating-input'},

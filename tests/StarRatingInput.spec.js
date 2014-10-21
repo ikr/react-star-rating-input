@@ -1,4 +1,4 @@
-describe('StarRatingInput instance', function () {
+describe('StarRatingInput', function () {
     'use strict';
 
     var assert = require('assert'),
@@ -34,6 +34,12 @@ describe('StarRatingInput instance', function () {
 
     afterEach(function () {
         global.window.close();
+    });
+
+    ['currentValue', 'onChange'].forEach(function (p) {
+        it('declares the ' + p + ' property', function () {
+            assert(StarRatingInput.propTypes[p]);
+        });
     });
 
     describe('static markup', function () {
