@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "jshint tests src index.js demo.js",
-    "test": "mocha tests/*.spec.js",
+    "test": "mocha -b tests/*.spec.js",
     "build": "browserify -t brfs demo.js | uglifyjs > www/bundle.js"
   },
   "repository": {
