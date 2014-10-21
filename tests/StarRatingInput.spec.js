@@ -67,12 +67,8 @@ describe('StarRatingInput', function () {
             },
 
             element = function (value, prospectiveValue) {
-                var component = TestUtils.renderIntoDocument(
-                        StarRatingInput(props(value, prospectiveValue))
-                    );
-
+                var component = TestUtils.renderIntoDocument(StarRatingInput(props(value)));
                 component.setState({prospectiveValue: prospectiveValue});
-
                 return component.getDOMNode();
             };
 
