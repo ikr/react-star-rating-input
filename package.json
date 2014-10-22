@@ -8,6 +8,9 @@
     "test": "mocha -b tests/*.spec.js",
     "build": "browserify -t brfs demo.js | uglifyjs > www/bundle.js"
   },
+  "browserify": {
+    "transform": ["brfs"]
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/ikr/react-star-rating-input.git"
