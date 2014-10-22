@@ -9,7 +9,7 @@
             render: function () {
                 return StarRatingInput.Klass({
                     value: this.state.value,
-                    onChange: function (s) { this.setState(s); }.bind(this)
+                    onChange: function (value) { this.setState({value: value}); }.bind(this)
                 });
             },
 

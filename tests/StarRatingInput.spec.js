@@ -131,13 +131,13 @@ describe('StarRatingInput', function () {
 
         it('include signalling new current value on a star click', function () {
             TestUtils.Simulate.click(component.refs.s5);
-            assert(spy.calledWith({value: 5}));
+            assert(spy.calledWith(5));
             assert.strictEqual(component.state.prospectiveValue, 0);
         });
 
         it('include signalling zero current value on a "Clear" link click', function () {
             TestUtils.Simulate.click(component.refs.s0);
-            assert(spy.calledWith({value: 0}));
+            assert(spy.calledWith(0));
             assert.strictEqual(component.state.prospectiveValue, 0);
         });
     });

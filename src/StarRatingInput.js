@@ -37,7 +37,7 @@
                     onClick: function (e) {
                         e.preventDefault();
                         this.setState({prospectiveValue: 0});
-                        this.props.onChange({value: 0});
+                        this.props.onChange(0);
                     }.bind(this)
                 }, 'Clear')
             );
@@ -70,7 +70,7 @@
                     onClick: function (e) {
                         e.preventDefault();
                         this.setState({prospectiveValue: 0});
-                        this.props.onChange({value: value});
+                        this.props.onChange(value);
                     }.bind(this)
                 }, value)
             );
