@@ -3,31 +3,16 @@ describe('StarRatingInput', function () {
 
     var assert = require('assert'),
         sinon = require('sinon'),
-        jsdom = require('jsdom'),
+        bro = require('jsdom-test-browser'),
+        React = require('react'),
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
         props = function (value, onChange) {
             return {value: value, onChange: (onChange ? onChange : function () {})};
-        },
+        };
 
-        $;
-
-    this.timeout(4000);
-
-    beforeEach(function (done) {
-        global.document = jsdom.jsdom('<html><body></body></html>', jsdom.level(1, 'core'));
-        global.window = global.document.parentWindow;
-
-        jsdom.jQueryify(global.window, 'http://code.jquery.com/jquery-1.11.0.min.js', function () {
-            $ = global.window.$;
-            done();
-        });
-    });
-
-    afterEach(function () {
-        global.window.close();
-    });
+    before(function (done) { bro.jQueryify(done); });
 
     ['value', 'onChange'].forEach(function (p) {
         it('declares the ' + p + ' property', function () {
@@ -39,35 +24,40 @@ describe('StarRatingInput', function () {
         var element;
 
         beforeEach(function () {
-            element = TestUtils.renderIntoDocument(StarRatingInput(props(0))).getDOMNode();
+            element = TestUtils.renderIntoDocument(
+                React.createElement(StarRatingInput, props(0))
+            ).getDOMNode();
         });
 
         it('has the root element\'s class assigned', function () {
-            assert($(element).hasClass('star-rating-input'));
+            assert(bro.$(element).hasClass('star-rating-input'));
         });
 
         it('has the "Clear" link', function () {
-            assert.strictEqual($('a.star-rating-clear', element).text(), 'Clear');
+            assert.strictEqual(bro.$('a.star-rating-clear', element).text(), 'Clear');
         });
 
         it('has the 5 star items', function () {
-            assert.strictEqual($('.star-rating-star-container', element).size(), 5);
+            assert.strictEqual(bro.$('.star-rating-star-container', element).size(), 5);
         });
     });
 
     describe('state indication', function () {
         var assertState = function (element, onCount, offCount, suggestedCount) {
-                assert.strictEqual($('.star-rating-star-container a.on', element).size(), onCount);
+                assert.strictEqual(bro.$('.star-rating-star-container a.on', element).size(), onCount);
 
                 assert.strictEqual(
-                    $('.star-rating-star-container a.off', element).size(), offCount);
+                    bro.$('.star-rating-star-container a.off', element).size(), offCount);
 
                 assert.strictEqual(
-                    $('.star-rating-star-container a.suggested', element).size(), suggestedCount);
+                    bro.$('.star-rating-star-container a.suggested', element).size(), suggestedCount);
             },
 
             element = function (value, prospectiveValue) {
-                var component = TestUtils.renderIntoDocument(StarRatingInput(props(value)));
+                var component = TestUtils.renderIntoDocument(
+                    React.createElement(StarRatingInput, props(value))
+                );
+
                 component.setState({prospectiveValue: prospectiveValue});
                 return component.getDOMNode();
             };
@@ -85,7 +75,9 @@ describe('StarRatingInput', function () {
         var component;
 
         beforeEach(function () {
-            component = TestUtils.renderIntoDocument(StarRatingInput({onChange: function () {}}));
+            component = TestUtils.renderIntoDocument(
+                React.createElement(StarRatingInput, {onChange: function () {}})
+            );
         });
 
         it('include default value', function () {
@@ -103,7 +95,11 @@ describe('StarRatingInput', function () {
 
         beforeEach(function () {
             spy = sinon.spy();
-            component = TestUtils.renderIntoDocument(StarRatingInput(props(1, spy)));
+
+            component = TestUtils.renderIntoDocument(
+                React.createElement(StarRatingInput, props(1, spy))
+            );
+
             component.setState({prospectiveValue: 2});
         });
 

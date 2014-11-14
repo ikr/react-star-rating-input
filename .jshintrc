@@ -98,7 +98,8 @@
         "it",
         "describe",
         "beforeEach",
-        "afterEach"
+        "afterEach",
+        "before"
     ],
     "indent"        : 4,        // Specify indentation spacing.
     "camelcase"     : true,     // Variable names to use either camelCase or UPPER_CASE style.

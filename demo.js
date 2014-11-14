@@ -7,7 +7,7 @@
 
         Container = React.createClass({
             render: function () {
-                return StarRatingInput.Klass({
+                return React.createElement(StarRatingInput.Klass, {
                     value: this.state.value,
                     onChange: function (value) { this.setState({value: value}); }.bind(this)
                 });
@@ -19,5 +19,5 @@
         });
 
     insertCss(StarRatingInput.css);
-    React.renderComponent(Container(), global.document.body);
+    React.render(React.createElement(Container), global.document.body);
 }());
