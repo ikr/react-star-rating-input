@@ -8,6 +8,7 @@
         Container = React.createClass({
             render: function () {
                 return React.createElement(StarRatingInput.Klass, {
+                    size: 5,
                     value: this.state.value,
                     onChange: function (value) { this.setState({value: value}); }.bind(this)
                 });
