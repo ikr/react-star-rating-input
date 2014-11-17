@@ -8,8 +8,8 @@ describe('StarRatingInput', function () {
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
-        props = function (value, onChange) {
-            return {value: value, onChange: (onChange ? onChange : function () {})};
+        props = function (value, size, onChange) {
+            return {value: value, size: size || 5, onChange: (onChange ? onChange : function () {})};
         };
 
     before(function (done) { bro.jQueryify(done); });
@@ -21,24 +21,26 @@ describe('StarRatingInput', function () {
     });
 
     describe('static markup', function () {
-        var element;
-
-        beforeEach(function () {
-            element = TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(0))
+        var element = function (size) {
+            return TestUtils.renderIntoDocument(
+                React.createElement(StarRatingInput, props(0, size))
             ).getDOMNode();
-        });
+        };
 
         it('has the root element\'s class assigned', function () {
-            assert(bro.$(element).hasClass('star-rating-input'));
+            assert(bro.$(element()).hasClass('star-rating-input'));
         });
 
         it('has the "Clear" link', function () {
-            assert.strictEqual(bro.$('a.star-rating-clear', element).text(), 'Clear');
+            assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Clear');
         });
 
-        it('has the 5 star items', function () {
-            assert.strictEqual(bro.$('.star-rating-star-container', element).size(), 5);
+        it('has the 5 star items as default', function () {
+            assert.strictEqual(bro.$('.star-rating-star-container', element()).size(), 5);
+        });
+
+        it('has the N star items', function () {
+          assert.strictEqual(bro.$('.star-rating-star-container', element(10)).size(), 10);
         });
     });
 
@@ -97,7 +99,7 @@ describe('StarRatingInput', function () {
             spy = sinon.spy();
 
             component = TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(1, spy))
+                React.createElement(StarRatingInput, props(1, 5, spy))
             );
 
             component.setState({prospectiveValue: 2});

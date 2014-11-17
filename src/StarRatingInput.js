@@ -10,7 +10,7 @@
         },
 
         getDefaultProps: function () {
-            return {value: 0};
+            return {value: 0, size: 5};
         },
 
         getInitialState: function () {
@@ -44,9 +44,12 @@
         },
 
         starItems: function () {
-            return [1, 2, 3, 4, 5].map(function (value) {
-                return this.starItem(value, this.anchorMode(value));
-            }.bind(this));
+            var stars = [],
+                i;
+            for (i = 1; i <= this.props.size; i += 1) {
+                stars.push(this.starItem(i, this.anchorMode(i)));
+            }
+            return stars;
         },
 
         starItem: function (value, mode) {
