@@ -8,8 +8,13 @@ describe('StarRatingInput', function () {
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
-        props = function (value, size, onChange) {
-            return {value: value, size: size || 5, onChange: (onChange ? onChange : function () {})};
+        props = function (value, size, noClear, onChange) {
+            return {
+                value: value,
+                size: size || 5,
+                noClear: noClear || false,
+                onChange: (onChange ? onChange : function () {})
+            };
         };
 
     before(function (done) { bro.jQueryify(done); });
@@ -21,9 +26,9 @@ describe('StarRatingInput', function () {
     });
 
     describe('static markup', function () {
-        var element = function (size) {
+        var element = function (size, noClear) {
             return TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(0, size))
+                React.createElement(StarRatingInput, props(0, size, noClear))
             ).getDOMNode();
         };
 
@@ -33,6 +38,11 @@ describe('StarRatingInput', function () {
 
         it('has the "Clear" link', function () {
             assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Clear');
+            assert.strictEqual(bro.$('a.star-rating-clear', element()).css('display'), '');
+        });
+
+        it('does not have "Clear" link when noClear is true', function () {
+            assert.strictEqual(bro.$('a.star-rating-clear', element(5, true)).css('display'), 'none');
         });
 
         it('has the 5 star items as default', function () {
@@ -99,7 +109,7 @@ describe('StarRatingInput', function () {
             spy = sinon.spy();
 
             component = TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(1, 5, spy))
+                React.createElement(StarRatingInput, props(1, 5, false, spy))
             );
 
             component.setState({prospectiveValue: 2});
