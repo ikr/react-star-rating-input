@@ -11,7 +11,7 @@
         },
 
         getDefaultProps: function () {
-            return {value: 0, size: 5};
+            return {value: 0, size: 5, noClear: false};
         },
 
         getInitialState: function () {
