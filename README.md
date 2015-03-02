@@ -15,3 +15,15 @@ Made for [Browserify](http://browserify.org/); graphics and CSS bundled.
 
 See [the code](https://github.com/ikr/react-star-rating-input/blob/master/demo.js) of the demo
 mentioned above.
+
+## Props
+
+Static layout
+
+* `size` -- how many stars to display. The default value is 5
+* `showClear` -- hides the "Clear" link when `false`. The default value is `true`
+
+Interaction
+
+* `value` -- how many stars are selected
+* `onChange: function (value) {...}` -- your `value` change handler
