@@ -8,11 +8,11 @@ describe('StarRatingInput', function () {
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
 
-        props = function (value, size, noClear, onChange) {
+        props = function (value, size, showClear, onChange) {
             return {
                 value: value,
                 size: size || 5,
-                noClear: noClear || false,
+                showClear: showClear,
                 onChange: (onChange ? onChange : function () {})
             };
         };
@@ -26,9 +26,9 @@ describe('StarRatingInput', function () {
     });
 
     describe('static markup', function () {
-        var element = function (size, noClear) {
+        var element = function (size, showClear) {
             return TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(0, size, noClear))
+                React.createElement(StarRatingInput, props(0, size, showClear))
             ).getDOMNode();
         };
 
@@ -41,8 +41,8 @@ describe('StarRatingInput', function () {
             assert.strictEqual(bro.$('a.star-rating-clear', element()).css('display'), '');
         });
 
-        it('does not have "Clear" link when noClear is true', function () {
-            assert.strictEqual(bro.$('a.star-rating-clear', element(5, true)).css('display'), 'none');
+        it('does not have "Clear" link when showClear is false', function () {
+            assert.strictEqual(bro.$('a.star-rating-clear', element(5, false)).css('display'), 'none');
         });
 
         it('has the 5 star items as default', function () {

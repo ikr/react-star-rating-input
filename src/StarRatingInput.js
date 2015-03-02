@@ -7,11 +7,11 @@
         propTypes: {
             value: React.PropTypes.number,
             onChange: React.PropTypes.func,
-            noClear: React.PropTypes.bool
+            showClear: React.PropTypes.bool
         },
 
         getDefaultProps: function () {
-            return {value: 0, size: 5, noClear: false};
+            return {value: 0, size: 5, showClear: true};
         },
 
         getInitialState: function () {
@@ -34,7 +34,7 @@
                     title: 'Reset value to no stars',
                     href: '',
                     ref: 's0',
-                    style: this.props.noClear ? {display: 'none'} : null,
+                    style: this.props.showClear ? null : {display: 'none'},
 
                     onClick: function (e) {
                         e.preventDefault();
