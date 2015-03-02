@@ -6,11 +6,12 @@
     module.exports = React.createClass({
         propTypes: {
             value: React.PropTypes.number,
-            onChange: React.PropTypes.func
+            onChange: React.PropTypes.func,
+            noClear: React.PropTypes.bool
         },
 
         getDefaultProps: function () {
-            return {value: 0, size: 5};
+            return {value: 0, size: 5, noClear: false};
         },
 
         getInitialState: function () {
@@ -33,6 +34,7 @@
                     title: 'Reset value to no stars',
                     href: '',
                     ref: 's0',
+                    style: this.props.noClear ? {display: 'none'} : null,
 
                     onClick: function (e) {
                         e.preventDefault();
