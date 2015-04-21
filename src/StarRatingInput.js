@@ -1,9 +1,19 @@
 (function () {
     'use strict';
 
-    var React = require('react');
+    var React = require('react'),
+        ReactIntl = require('react-intl'),
+        IntlMixin = ReactIntl.IntlMixin,
+        FormattedMessage = ReactIntl.FormattedMessage,
+
+        enMessages = function () {
+            return {
+                clear: 'Clear'
+            };
+        };
 
     module.exports = React.createClass({
+        mixins: [IntlMixin],
         propTypes: {
             value: React.PropTypes.number,
             onChange: React.PropTypes.func,
@@ -19,6 +29,8 @@
         },
 
         render: function () {
+            this.props.messages = this.props.messages ? this.props.messages : enMessages();
+
             return React.DOM.div(
                 {className: 'star-rating-input'},
                 [this.clearingItem()].concat(this.starItems())
@@ -41,7 +53,7 @@
                         this.setState({prospectiveValue: 0});
                         this.props.onChange(0);
                     }.bind(this)
-                }, 'Clear')
+                }, React.createElement(FormattedMessage, {message: this.getIntlMessage('clear')}))
             );
         },
 
