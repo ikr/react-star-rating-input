@@ -27,3 +27,14 @@ Interaction
 
 * `value` -- how many stars are selected
 * `onChange: function (value) {...}` -- your `value` change handler
+
+## Internationalization
+
+To translate the component, please pass `messages` property to component.
+Where `messages` it's an object with following format:
+
+```js
+{
+    clear: 'Clear'
+}
+```
