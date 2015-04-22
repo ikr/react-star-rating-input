@@ -149,4 +149,21 @@ describe('StarRatingInput', function () {
             assert.strictEqual(component.state.prospectiveValue, 0);
         });
     });
+
+    describe('translations support', function () {
+        var element = function (size, showClear) {
+            var properties = props(0, size, showClear);
+            properties.messages = {
+                clear: 'Очистить'
+            };
+
+            return TestUtils.renderIntoDocument(
+                React.createElement(StarRatingInput, properties)
+            ).getDOMNode();
+        };
+
+        it('has the translatable link', function () {
+            assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Очистить');
+        });
+    });
 });

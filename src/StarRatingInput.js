@@ -1,9 +1,13 @@
 (function () {
     'use strict';
 
-    var React = require('react');
+    var React = require('react'),
+        ReactIntl = require('react-intl'),
+        IntlMixin = ReactIntl.IntlMixin,
+        FormattedMessage = ReactIntl.FormattedMessage;
 
     module.exports = React.createClass({
+        mixins: [IntlMixin],
         propTypes: {
             value: React.PropTypes.number,
             onChange: React.PropTypes.func,
@@ -11,7 +15,14 @@
         },
 
         getDefaultProps: function () {
-            return {value: 0, size: 5, showClear: true};
+            return {
+                value: 0,
+                size: 5,
+                showClear: true,
+                messages: {
+                    clear: 'Clear'
+                }
+            };
         },
 
         getInitialState: function () {
@@ -41,7 +52,7 @@
                         this.setState({prospectiveValue: 0});
                         this.props.onChange(0);
                     }.bind(this)
-                }, 'Clear')
+                }, React.createElement(FormattedMessage, {message: this.getIntlMessage('clear')}))
             );
         },
 
