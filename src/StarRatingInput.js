@@ -20,7 +20,10 @@
                 size: 5,
                 showClear: true,
                 messages: {
-                    clear: 'Clear'
+                    'react-star-rating-input': {
+                        clear: 'Clear',
+                        reset: 'Reset value to no stars'
+                    }
                 }
             };
         },
@@ -42,7 +45,9 @@
 
                 React.DOM.a({
                     className: 'star-rating-clear',
-                    title: 'Reset value to no stars',
+                    title: React.createElement(FormattedMessage, {
+                        message: this.getIntlMessage('react-star-rating-input.reset')
+                    }),
                     href: '',
                     ref: 's0',
                     style: this.props.showClear ? null : {display: 'none'},
@@ -52,7 +57,9 @@
                         this.setState({prospectiveValue: 0});
                         this.props.onChange(0);
                     }.bind(this)
-                }, React.createElement(FormattedMessage, {message: this.getIntlMessage('clear')}))
+                }, React.createElement(FormattedMessage, {
+                    message: this.getIntlMessage('react-star-rating-input.clear')
+                }))
             );
         },
 
