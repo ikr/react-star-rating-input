@@ -4,13 +4,7 @@
     var React = require('react'),
         ReactIntl = require('react-intl'),
         IntlMixin = ReactIntl.IntlMixin,
-        FormattedMessage = ReactIntl.FormattedMessage,
-
-        enMessages = function () {
-            return {
-                clear: 'Clear'
-            };
-        };
+        FormattedMessage = ReactIntl.FormattedMessage;
 
     module.exports = React.createClass({
         mixins: [IntlMixin],
@@ -21,7 +15,14 @@
         },
 
         getDefaultProps: function () {
-            return {value: 0, size: 5, showClear: true};
+            return {
+                value: 0,
+                size: 5,
+                showClear: true,
+                messages: {
+                    clear: 'Clear'
+                }
+            };
         },
 
         getInitialState: function () {
@@ -29,8 +30,6 @@
         },
 
         render: function () {
-            this.props.messages = this.props.messages ? this.props.messages : enMessages();
-
             return React.DOM.div(
                 {className: 'star-rating-input'},
                 [this.clearingItem()].concat(this.starItems())
