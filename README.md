@@ -35,7 +35,9 @@ Where `messages` it's an object with following format:
 
 ```js
 {
-    clear: 'Clear'
+    'react-star-rating-input': {
+        clear: 'Clear'
+    }
 }
 ```
 
