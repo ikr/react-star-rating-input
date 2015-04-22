@@ -1,6 +1,6 @@
 {
   "name": "react-star-rating-input",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "description": "React.js component for entering 0-5 stars",
   "main": "index.js",
   "scripts": {
@@ -48,7 +48,7 @@
     "jsdom": "^1.2.1",
     "jsdom-test-browser": "^2.0.0",
     "jshint": "^2.5.5",
-    "mocha": "^1.21.4",
+    "mocha": "^2.2.4",
     "sinon": "^1.10.3",
     "uglify-js": "^2.4.15"
   }
