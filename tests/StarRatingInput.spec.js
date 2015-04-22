@@ -154,7 +154,9 @@ describe('StarRatingInput', function () {
         var element = function (size, showClear) {
             var properties = props(0, size, showClear);
             properties.messages = {
-                clear: 'Очистить'
+                'react-star-rating-input': {
+                    clear: 'Очистить'
+                }
             };
 
             return TestUtils.renderIntoDocument(

@@ -20,7 +20,9 @@
                 size: 5,
                 showClear: true,
                 messages: {
-                    clear: 'Clear'
+                    'react-star-rating-input': {
+                        clear: 'Clear'
+                    }
                 }
             };
         },
@@ -52,7 +54,9 @@
                         this.setState({prospectiveValue: 0});
                         this.props.onChange(0);
                     }.bind(this)
-                }, React.createElement(FormattedMessage, {message: this.getIntlMessage('clear')}))
+                }, React.createElement(FormattedMessage, {
+                    message: this.getIntlMessage('react-star-rating-input.clear')
+                }))
             );
         },
 
