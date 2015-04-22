@@ -36,7 +36,8 @@ Where `messages` it's an object with following format:
 ```js
 {
     'react-star-rating-input': {
-        clear: 'Clear'
+        clear: 'Clear',
+        reset: 'Reset value to no stars'
     }
 }
 ```
