@@ -21,7 +21,8 @@
                 showClear: true,
                 messages: {
                     'react-star-rating-input': {
-                        clear: 'Clear'
+                        clear: 'Clear',
+                        reset: 'Reset value to no stars'
                     }
                 }
             };
@@ -44,7 +45,9 @@
 
                 React.DOM.a({
                     className: 'star-rating-clear',
-                    title: 'Reset value to no stars',
+                    title: React.createElement(FormattedMessage, {
+                        message: this.getIntlMessage('react-star-rating-input.reset')
+                    }),
                     href: '',
                     ref: 's0',
                     style: this.props.showClear ? null : {display: 'none'},
