@@ -34,7 +34,7 @@ Interaction
 `messages` property, containing:
 
 ```js
-{clear: Your own text for "Clear"'}
+{clear: 'Your own text for "Clear"'}
 ```
 
 This component depends on global `Intl` object. You can polyfill it with
