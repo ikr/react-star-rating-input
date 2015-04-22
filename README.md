@@ -30,19 +30,24 @@ Interaction
 
 ## Internationalization
 
-To translate the component, please pass `messages` property.
-Where `messages` it's an object with following format:
+[react-intl](https://github.com/yahoo/react-intl)-based. To translate the component, please pass the
+`messages` property, containing:
 
 ```js
-{
-    clear: 'Clear'
-}
+{clear: Your own text for "Clear"'}
 ```
 
-This component depends on global `Intl` object. You can polyfill it with [intl](https://github.com/andyearnshaw/Intl.js) package:
+This component depends on global `Intl` object. You can polyfill it with
+[intl](https://github.com/andyearnshaw/Intl.js) package:
 
 ```
 if (!global.Intl) {
     require('intl');
 }
 ```
+
+Why have a `react-intl` dependency instead of just setting the `clear` text as a prop?
+
+Well, that allows using `react-star-rating-input` uniformly in bigger applications, and passing all
+the namespaced translations, from the root, down the React components hierarchy, -- automatically,
+with the help of `IntlMixin`.
