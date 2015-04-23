@@ -9,6 +9,6 @@
                     clearHint: 'Reset value to no stars'
                 }
             }
-        }
+        };
     };
 }());
