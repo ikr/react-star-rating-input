@@ -7,9 +7,11 @@ describe('StarRatingInput', function () {
         React = require('react'),
         TestUtils = require('react/addons').addons.TestUtils,
         StarRatingInput = require('../src/StarRatingInput'),
+        intlMessages = require('../src/intlMessages'),
 
         props = function (value, size, showClear, onChange) {
             return {
+                messages: intlMessages().en,
                 value: value,
                 size: size || 5,
                 showClear: showClear,
@@ -88,7 +90,7 @@ describe('StarRatingInput', function () {
 
         beforeEach(function () {
             component = TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, {onChange: function () {}})
+                React.createElement(StarRatingInput, props())
             );
         });
 

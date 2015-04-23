@@ -18,13 +18,7 @@
             return {
                 value: 0,
                 size: 5,
-                showClear: true,
-                messages: {
-                    'react-star-rating-input': {
-                        clear: 'Clear',
-                        clearHint: 'Reset value to no stars'
-                    }
-                }
+                showClear: true
             };
         },
 
