@@ -41,15 +41,14 @@
     "react-intl": "^1.2.0"
   },
   "devDependencies": {
-    "brfs": "^1.2.0",
-    "browserify": "^6.3.2",
+    "brfs": "^1.4.0",
+    "browserify": "^9.0.8",
     "insert-css": "^0.2.0",
     "intl": "^0.1.4",
-    "jsdom": "^1.2.1",
-    "jsdom-test-browser": "^2.0.0",
-    "jshint": "^2.5.5",
+    "jsdom-test-browser": "^2.1.0",
+    "jshint": "^2.7.0",
     "mocha": "^2.2.4",
-    "sinon": "^1.10.3",
-    "uglify-js": "^2.4.15"
+    "sinon": "^1.14.1",
+    "uglify-js": "^2.4.20"
   }
 }
