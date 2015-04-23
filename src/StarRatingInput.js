@@ -45,9 +45,7 @@
 
                 React.DOM.a({
                     className: 'star-rating-clear',
-                    title: React.createElement(FormattedMessage, {
-                        message: this.getIntlMessage('react-star-rating-input.reset')
-                    }),
+                    title: this.getIntlMessage('react-star-rating-input.reset'),
                     href: '',
                     ref: 's0',
                     style: this.props.showClear ? null : {display: 'none'},
