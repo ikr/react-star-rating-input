@@ -165,11 +165,11 @@ describe('StarRatingInput', function () {
             ).getDOMNode();
         };
 
-        it('has the translatable link text', function () {
+        it('includes link text', function () {
             assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Очистить');
         });
 
-        it('has the translatable link title', function () {
+        it('includes link title', function () {
             assert.strictEqual(bro.$('a.star-rating-clear', element()).attr('title'), 'Сбросить');
         });
     });
