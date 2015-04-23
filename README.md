@@ -37,12 +37,13 @@ Interaction
 {
     'react-star-rating-input': {
         clear: 'Clear',
-        reset: 'Reset value to no stars'
+        clearHint: 'Reset value to no stars'
     }
 }
 ```
 
-Why have a `react-intl` dependency instead of just setting the `clear` text as a prop?
+Why have a `react-intl` dependency instead of just setting the `clear` and `clearHint` text as
+props?
 
 Well, that allows using `react-star-rating-input` uniformly in bigger applications, and passing all
 the namespaced translations, from the root, down the React components hierarchy, -- automatically,

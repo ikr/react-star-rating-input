@@ -156,7 +156,7 @@ describe('StarRatingInput', function () {
             properties.messages = {
                 'react-star-rating-input': {
                     clear: 'Очистить',
-                    reset: 'Сбросить'
+                    clearHint: 'Сбросить'
                 }
             };
 
@@ -165,8 +165,12 @@ describe('StarRatingInput', function () {
             ).getDOMNode();
         };
 
-        it('has the translatable link', function () {
+        it('has the translatable link text', function () {
             assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Очистить');
+        });
+
+        it('has the translatable link title', function () {
+            assert.strictEqual(bro.$('a.star-rating-clear', element()).attr('title'), 'Сбросить');
         });
     });
 });
