@@ -9,11 +9,6 @@
     "build": "browserify demo.js | uglifyjs > www/bundle.js",
     "tdd": "mocha --require ./test-hook -b -R min -w tests/*.spec.js"
   },
-  "browserify": {
-    "transform": [
-      "brfs"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/ikr/react-star-rating-input.git"
@@ -42,7 +37,6 @@
     "react-intl": "^1.2.0"
   },
   "devDependencies": {
-    "brfs": "^1.4.0",
     "browserify": "^9.0.8",
     "insert-css": "^0.2.0",
     "intl": "^0.1.4",
