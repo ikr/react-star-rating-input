@@ -2,14 +2,12 @@
   "name": "react-star-rating-input",
   "version": "6.0.1",
   "description": "React.js component for entering 0-5 stars",
-  "main": "bundle.js",
+  "main": "index.js",
   "scripts": {
     "pretest": "jshint tests src index.js demo.js",
     "test": "mocha --require ./test-hook -b tests/*.spec.js",
-    "build": "browserify index.js > ./bundle.js",
-    "demo": "browserify demo.js > www/bundle.js",
-    "tdd": "mocha --require ./test-hook -b -R min -w tests/*.spec.js",
-    "prepublish": "npm run build"
+    "build": "browserify demo.js | uglifyjs > www/bundle.js",
+    "tdd": "mocha --require ./test-hook -b -R min -w tests/*.spec.js"
   },
   "browserify": {
     "transform": [
