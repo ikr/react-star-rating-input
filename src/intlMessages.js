@@ -8,6 +8,13 @@
                     clear: 'Clear',
                     clearHint: 'Reset value to no stars'
                 }
+            },
+
+            de: {
+                'react-star-rating-input': {
+                    clear: 'Löschen',
+                    clearHint: 'Rücksetzen zu keine Sterne'
+                }
             }
         };
     };
