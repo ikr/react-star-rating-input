@@ -2,13 +2,11 @@
     'use strict';
 
     var React = require('react'),
-        IntlMixin = require('react-intl').IntlMixin,
+        ReactDOM = require('react-dom'),
         insertCss = require('insert-css'),
         StarRatingInput = require('./index'),
 
         Container = React.createClass({
-            mixins: [IntlMixin],
-
             render: function () {
                 return React.createElement(StarRatingInput.Klass, {
                     size: 5,
@@ -24,12 +22,8 @@
 
     insertCss(StarRatingInput.css);
 
-    React.render(
-        React.createElement(
-            Container,
-            {messages: StarRatingInput.intlMessages().en}
-        ),
-
-        global.document.body
+    ReactDOM.render(
+        React.createElement(Container),
+        global.document.getElementById('root')
     );
 }());

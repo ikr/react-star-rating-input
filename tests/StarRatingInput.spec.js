@@ -3,23 +3,20 @@ describe('StarRatingInput', function () {
 
     var assert = require('assert'),
         sinon = require('sinon'),
-        bro = require('jsdom-test-browser'),
         React = require('react'),
-        TestUtils = require('react/addons').addons.TestUtils,
+        ReactDOM = require('react-dom'),
+        TestUtils = require('react-addons-test-utils'),
+        massert = require('./helpers/massert'),
         StarRatingInput = require('../src/StarRatingInput'),
-        intlMessages = require('../src/intlMessages'),
 
         props = function (value, size, showClear, onChange) {
             return {
-                messages: intlMessages().en,
                 value: value,
                 size: size || 5,
                 showClear: showClear,
                 onChange: (onChange ? onChange : function () {})
             };
         };
-
-    before(function (done) { bro.jQueryify(done); });
 
     ['value', 'onChange'].forEach(function (p) {
         it('declares the ' + p + ' property', function () {
@@ -29,42 +26,50 @@ describe('StarRatingInput', function () {
 
     describe('static markup', function () {
         var element = function (size, showClear) {
-            return TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(0, size, showClear))
-            ).getDOMNode();
+            return ReactDOM.findDOMNode(
+                TestUtils.renderIntoDocument(
+                    React.createElement(StarRatingInput, props(0, size, showClear))
+                )
+            );
         };
 
         it('has the root element\'s class assigned', function () {
-            assert(bro.$(element()).hasClass('star-rating-input'));
+            massert.cssClass(element(), 'star-rating-input');
         });
 
         it('has the "Clear" link', function () {
-            assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Clear');
-            assert.strictEqual(bro.$('a.star-rating-clear', element()).css('display'), '');
+            var aClear = element().querySelector('a.star-rating-clear');
+
+            assert.strictEqual(aClear.textContent, 'Clear');
+            assert(!aClear.hasAttribute('style'));
         });
 
         it('does not have "Clear" link when showClear is false', function () {
-            assert.strictEqual(bro.$('a.star-rating-clear', element(5, false)).css('display'), 'none');
+            assert.strictEqual(element(5, false).querySelector('a.star-rating-clear'), null);
         });
 
         it('has the 5 star items as default', function () {
-            assert.strictEqual(bro.$('.star-rating-star-container', element()).size(), 5);
+            assert.strictEqual(element().querySelectorAll('.star-rating-star-container').length, 5);
         });
 
         it('has the N star items', function () {
-          assert.strictEqual(bro.$('.star-rating-star-container', element(10)).size(), 10);
+            assert.strictEqual(
+                element(10).querySelectorAll('.star-rating-star-container').length, 10);
         });
     });
 
     describe('state indication', function () {
         var assertState = function (element, onCount, offCount, suggestedCount) {
-                assert.strictEqual(bro.$('.star-rating-star-container a.on', element).size(), onCount);
+                assert.strictEqual(
+                    element.querySelectorAll('.star-rating-star-container a.on').length, onCount);
 
                 assert.strictEqual(
-                    bro.$('.star-rating-star-container a.off', element).size(), offCount);
+                    element.querySelectorAll('.star-rating-star-container a.off').length, offCount);
 
                 assert.strictEqual(
-                    bro.$('.star-rating-star-container a.suggested', element).size(), suggestedCount);
+                    element.querySelectorAll('.star-rating-star-container a.suggested').length,
+                    suggestedCount
+                );
             },
 
             element = function (value, prospectiveValue) {
@@ -73,7 +78,7 @@ describe('StarRatingInput', function () {
                 );
 
                 component.setState({prospectiveValue: prospectiveValue});
-                return component.getDOMNode();
+                return ReactDOM.findDOMNode(component);
             };
 
         it('is done with the "on" class for current values', function () {
@@ -111,7 +116,7 @@ describe('StarRatingInput', function () {
             spy = sinon.spy();
 
             component = TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, props(1, 5, false, spy))
+                React.createElement(StarRatingInput, props(1, 5, true, spy))
             );
 
             component.setState({prospectiveValue: 2});
@@ -154,25 +159,26 @@ describe('StarRatingInput', function () {
 
     describe('translations support', function () {
         var element = function (size, showClear) {
-            var properties = props(0, size, showClear);
-            properties.messages = {
-                'react-star-rating-input': {
-                    clear: 'Очистить',
-                    clearHint: 'Сбросить'
-                }
+                var properties = props(0, size, showClear);
+
+                properties.clearLabel = 'Очистить';
+                properties.clearHint = 'Сбросить';
+
+                return ReactDOM.findDOMNode(
+                    TestUtils.renderIntoDocument(
+                        React.createElement(StarRatingInput, properties)
+                    )
+                );
             };
 
-            return TestUtils.renderIntoDocument(
-                React.createElement(StarRatingInput, properties)
-            ).getDOMNode();
-        };
-
         it('includes link text', function () {
-            assert.strictEqual(bro.$('a.star-rating-clear', element()).text(), 'Очистить');
+            assert.strictEqual(
+                element().querySelector('a.star-rating-clear').textContent, 'Очистить');
         });
 
         it('includes link title', function () {
-            assert.strictEqual(bro.$('a.star-rating-clear', element()).attr('title'), 'Сбросить');
+            assert.strictEqual(
+                element().querySelector('a.star-rating-clear').getAttribute('title'), 'Сбросить');
         });
     });
 });

@@ -1,13 +1,9 @@
 (function () {
     'use strict';
 
-    var React = require('react'),
-        ReactIntl = require('react-intl'),
-        IntlMixin = ReactIntl.IntlMixin,
-        FormattedMessage = ReactIntl.FormattedMessage;
+    var React = require('react');
 
     module.exports = React.createClass({
-        mixins: [IntlMixin],
         propTypes: {
             value: React.PropTypes.number,
             onChange: React.PropTypes.func,
@@ -18,7 +14,9 @@
             return {
                 value: 0,
                 size: 5,
-                showClear: true
+                showClear: true,
+                clearLabel: 'Clear',
+                clearHint: 'Reset value to no stars'
             };
         },
 
@@ -27,32 +25,36 @@
         },
 
         render: function () {
-            return React.DOM.div(
+            return React.createElement(
+                'div',
                 {className: 'star-rating-input'},
-                [this.clearingItem()].concat(this.starItems())
+                this.clearingItems().concat(this.starItems())
             );
         },
 
-        clearingItem: function () {
-            return React.DOM.div(
+        clearingItems: function () {
+            if (!this.props.showClear) {
+                return [];
+            }
+
+            return [React.createElement(
+                'div',
                 {className: 'star-rating-clear-container', key: 0},
 
-                React.DOM.a({
+                React.createElement('a', {
                     className: 'star-rating-clear',
-                    title: this.getIntlMessage('react-star-rating-input.clearHint'),
+                    title: this.props.clearHint,
                     href: '',
                     ref: 's0',
-                    style: this.props.showClear ? null : {display: 'none'},
 
                     onClick: function (e) {
                         e.preventDefault();
                         this.setState({prospectiveValue: 0});
                         this.props.onChange(0);
                     }.bind(this)
-                }, React.createElement(FormattedMessage, {
-                    message: this.getIntlMessage('react-star-rating-input.clear')
-                }))
-            );
+                }, this.props.clearLabel)
+            )];
+
         },
 
         starItems: function () {
@@ -65,10 +67,11 @@
         },
 
         starItem: function (value, mode) {
-            return React.DOM.div(
+            return React.createElement(
+                'div',
                 {className: 'star-rating-star-container', key: value},
 
-                React.DOM.a({
+                React.createElement('a', {
                     className: 'star-rating-star ' + mode,
                     title: value,
                     href: '',

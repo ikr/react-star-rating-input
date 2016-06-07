@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "pretest": "jshint tests src index.js demo.js",
-    "test": "mocha --require ./test-hook -b tests/*.spec.js",
+    "test": "mocha -r tests/helpers/jsdom-bootstrap -b tests/*.spec.js",
     "build": "browserify demo.js | uglifyjs > www/bundle.js",
-    "tdd": "mocha --require ./test-hook -b -R min -w tests/*.spec.js"
+    "tdd": "mocha -r tests/helpers/jsdom-bootstrap -b -R min -w tests/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -32,18 +32,17 @@
   "bugs": {
     "url": "https://github.com/ikr/react-star-rating-input/issues"
   },
-  "dependencies": {
-    "react": "^0.13.3",
-    "react-intl": "^1.2.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "browserify": "^9.0.8",
+    "browserify": "^13.0.1",
     "insert-css": "^0.2.0",
-    "intl": "^0.1.4",
-    "jsdom-test-browser": "^2.1.0",
-    "jshint": "^2.7.0",
-    "mocha": "^2.2.4",
-    "sinon": "^1.14.1",
-    "uglify-js": "^2.4.20"
+    "jsdom": "^9.2.1",
+    "jshint": "^2.9.2",
+    "mocha": "^2.5.3",
+    "react": "^15.1.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "sinon": "^1.17.4",
+    "uglify-js": "^2.6.2"
   }
 }
