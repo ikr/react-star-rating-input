@@ -23,7 +23,7 @@ Static layout
 * `size` -- how many stars to display. The default value is 5
 * `showClear` -- hides the "Clear" link when `false`. The default value is `true`
 * `clearLabel` -- custom text for the "Clear" link
-* `clearHint` -- custom tool-tip for the `clearLabel` on mouse-hover
+* `clearHint` -- custom `<a>`'s title, a tooltip for the "Clear" link on mouse-hover
 
 Interaction
 
