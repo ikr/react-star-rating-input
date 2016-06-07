@@ -2,4 +2,4 @@
 
 * React is no longer in the dependencies
 * Replace react-intl with plain text props: clearLabel, clearHint
-* Compatibility with React 0.15
+* Compatibility with React 0.15 verified
