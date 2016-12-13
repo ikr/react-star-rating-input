@@ -14,7 +14,7 @@ describe('browser package index', function () {
         });
 
         it('exports the css', function () {
-            assert.strictEqual(browserApi.css, api.cuss);
+            assert.strictEqual(browserApi.css, api.css);
         });
     });
 
