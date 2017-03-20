@@ -43,6 +43,6 @@
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.1.0",
     "sinon": "^2.0.0",
-    "uglify-js": "^2.6.2"
+    "uglify-js": "^2.8.14"
   }
 }
