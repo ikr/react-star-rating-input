@@ -1,7 +1,7 @@
-var jsdom = require('jsdom').jsdom;
+var JSDOM = require('jsdom').JSDOM;
 
-var doc = jsdom('<html><body></body></html>');
-var win = doc.defaultView;
+var doc = new JSDOM('<html><body></body></html>');
+var win = doc.window;
 
 /* global global */
 
