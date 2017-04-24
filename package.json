@@ -36,7 +36,7 @@
   "devDependencies": {
     "browserify": "^14.0.0",
     "insert-css": "^2.0.0",
-    "jsdom": "^9.8.2",
+    "jsdom": "^10.0.0",
     "jshint": "^2.9.2",
     "mocha": "^3.0.0",
     "react": "^15.1.0",
