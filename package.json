@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "pretest": "jshint tests src index.js demo.js",
-    "test": "mocha -r tests/helpers/jsdom-bootstrap -b tests/*.spec.js",
+    "test": "mocha -r tests/helpers/jsdom -b tests/*.spec.js",
     "build": "browserify demo.js | uglifyjs -mc > www/bundle.js",
-    "tdd": "mocha -r tests/helpers/jsdom-bootstrap -b -R min -w tests/*.spec.js"
+    "tdd": "mocha -r tests/helpers/jsdom -b -R min -w tests/*.spec.js"
   },
   "repository": {
     "type": "git",
