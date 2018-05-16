@@ -15,6 +15,13 @@
                     clear: 'Löschen',
                     clearHint: 'Rücksetzen zu keine Sterne'
                 }
+            },
+
+            zh: {
+                'react-star-rating-input': {
+                    clear: '清除',
+                    clearHint: '清除提示'
+                }
             }
         };
     };
