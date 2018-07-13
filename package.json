@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "demo": "parcel src/demo.html",
-    "demo-build": "parcel build src/demo.html",
+    "demo": "parcel serve -d www --no-source-maps src/demo.html",
+    "demo-build": "parcel build -d www --no-source-maps --public-url /h/react-star-rating-input src/demo.html",
     "prepublish": "npm run build",
     "tdd": "mocha -r ts-node/register -r tests/helpers/configureEnzyme --watch-extensions ts,tsx -b -R min -w tests/*.spec.*",
     "test": "mocha -r ts-node/register -r tests/helpers/configureEnzyme -b tests/*.spec.*"
@@ -44,6 +44,7 @@
     "@types/sinon": "^5.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "insert-css": "^2.0.0",
     "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
     "parcel-bundler": "^1.9.6",
