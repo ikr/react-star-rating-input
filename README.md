@@ -2,7 +2,7 @@
 
 # About
 
-React.js components for entering 0-N stars (N is 5 by default), or displaying 0—N stars. See [the
+React.js components for entering 0—N stars (N is 5 by default), or displaying 0—N stars. See [the
 demo](http://ikr.su/h/react-star-rating-input/demo.html).
 
 # Installation
