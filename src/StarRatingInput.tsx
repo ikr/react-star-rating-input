@@ -1,4 +1,6 @@
 import * as React from 'react'
+import ClickEvent from './ClickEvent'
+import starRange from './starRange'
 
 const DEFAULT_SIZE = 5
 
@@ -119,18 +121,4 @@ interface StarProps {
     onMouseEnter: () => void,
     onMouseLeave: () => void,
     onClick: () => void
-}
-
-interface ClickEvent {
-    preventDefault: () => void
-}
-
-function starRange(size: number): number[] {
-    const result = new Array(size)
-
-    for (let i = 0; i < size; i++) {
-        result[i] = i + 1
-    }
-
-    return result
 }
