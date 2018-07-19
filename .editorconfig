@@ -6,7 +6,7 @@ indent_style = space
 insert_final_newline = true
 charset = utf-8
 
-[*.js]
+[*.{js,ts,tsx}]
 indent_size = 4
 
 [*.json]
