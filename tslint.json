@@ -12,6 +12,10 @@
     "ordered-imports": false,
     "quotemark": [true, "single", "jsx-single"],
     "semicolon": [true, "never"],
+    "space-before-function-paren": [
+      true,
+      {"anonymous": "always", "named": "never", "asyncArrow": "always"}
+    ],
     "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
   },
