@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { resolve } from 'url';
 
 const DEFAULT_SIZE = 5
 
@@ -39,10 +38,10 @@ export default class StarRatingInput extends React.Component<Props, State> {
 
     private anchorMode(value: number): string {
         if (this.state.prospectiveValue > 0) {
-            return (value <= this.state.prospectiveValue ? 'suggested' : 'off');
+            return (value <= this.state.prospectiveValue ? 'suggested' : 'off')
         }
 
-        return (value <= this.props.value ? 'on' : 'off');
+        return (value <= this.props.value ? 'on' : 'off')
     }
 
     private handleStarMouseEnter(value: number): void {
@@ -126,11 +125,11 @@ interface ClickEvent {
     preventDefault: () => void
 }
 
-function starRange(size: number): Array<number> {
+function starRange(size: number): number[] {
     const result = new Array(size)
 
     for (let i = 0; i < size; i++) {
-        result[i] = i + 1;
+        result[i] = i + 1
     }
 
     return result

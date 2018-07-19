@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export default `
 a.star-rating-clear {
   text-decoration: underline;
