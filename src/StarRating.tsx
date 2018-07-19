@@ -14,18 +14,13 @@ export interface Props {
     value: number
 }
 
-function Star(props: StarProps) {
+function Star() {
     return (
         <div className='star-rating-star-container'>
             <a
                 className={`star-rating-star on`}
-                title={`${props.key}`}
                 href=''
                 onClick={(e: ClickEvent) => { e.preventDefault() }} />
         </div>
     )
-}
-
-interface StarProps {
-    key: number
 }
