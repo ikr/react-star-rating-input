@@ -28,6 +28,10 @@ describe('StarRatingInput', () => {
     it('has default prospective value of zero', function() {
         assert.strictEqual(wrapper.state().prospectiveValue, 0);
     })
+
+    it('has the "Clear" link', () => {
+        assert.strictEqual(wrapper.find('Clear').length, 1);
+    })
 })
 
 describe('StarRatingInput of size 10', () => {

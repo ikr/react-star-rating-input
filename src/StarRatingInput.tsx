@@ -21,6 +21,7 @@ export default class StarRatingInput extends React.Component<Props, State> {
 
         return (
             <div className='star-rating-input'>
+                <Clear onClick={function () { }} />
                 {range.map(i => (<Star {...this.starProps(i)} key={i} />))}
             </div >
         )
@@ -73,6 +74,26 @@ export interface Props {
 
 export interface State {
     prospectiveValue: number
+}
+
+function Clear(props: ClearProps) {
+    return (
+        <div className='star-rating-clear-container'>
+            <a
+                className='star-rating-clear'
+                href=''
+                title='0'
+                onClick={(e: ClickEvent) => {
+                    e.preventDefault()
+                }}>
+                •
+            </a>
+        </div>
+    )
+}
+
+interface ClearProps {
+    onClick: () => void
 }
 
 function Star(props: StarProps) {
