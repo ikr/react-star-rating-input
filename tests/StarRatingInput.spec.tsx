@@ -110,4 +110,14 @@ describe('StarRatingInput interactions', () => {
         assert.strictEqual(wrapper.state().prospectiveValue, 0)
         assert(onChange.calledOnceWith(5))
     })
+
+    it('include signalling new current value on a clear bullet click', async () => {
+        const onChange = spy()
+        const wrapper = await newWrapper(onChange)
+        wrapper.find('a.star-rating-clear').simulate('click')
+
+        await wrapper.instance().promiseSetStateDone
+        assert.strictEqual(wrapper.state().prospectiveValue, 0)
+        assert(onChange.calledOnceWith(0))
+    })
 })
