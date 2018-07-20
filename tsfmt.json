@@ -1,0 +1,12 @@
+{
+  "convertTabsToSpaces": true,
+  "indentSize": 4,
+  "insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+  "insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+  "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+  "insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+  "placeOpenBraceOnNewLineForControlBlocks": false,
+  "placeOpenBraceOnNewLineForFunctions": false,
+  "tabSize": 4
+}

@@ -1,4 +1,9 @@
-# 7.0.0
+# v8
+
+* Convert to TypeScript
+* New reduced API: interactive StarRatingInput + static StarRating
+
+# v7
 
 * React is no longer in the dependencies
 * Replace react-intl with plain text props: clearLabel, clearHint
