@@ -1,3 +1,4 @@
 src
 tests
 dist/demo.js
+dist/demo.d.ts
