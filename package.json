@@ -11,8 +11,8 @@
     "lint": "tslint -c tslint.json src/*.{ts,tsx} test/*.{ts,tsx}",
     "prepublish": "npm run build",
     "pretest": "npm run lint",
-    "tdd": "mocha -r ts-node/register -r tests/helpers/configureEnzyme --watch-extensions ts,tsx -b -R min -w tests/*.spec.*",
-    "test": "mocha -r ts-node/register -r tests/helpers/configureEnzyme -b tests/*.spec.*"
+    "tdd": "mocha -r ts-node/register -r tests/helpers/enzyme --watch-extensions ts,tsx -b -R min -w tests/*.spec.*",
+    "test": "mocha -r ts-node/register -r tests/helpers/enzyme -b tests/*.spec.*"
   },
   "repository": {
     "type": "git",
