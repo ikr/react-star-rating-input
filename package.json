@@ -1,6 +1,6 @@
 {
   "name": "react-star-rating-input",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "React.js components for entering/displaying star ratings",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
